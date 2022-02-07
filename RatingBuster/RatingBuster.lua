@@ -2792,9 +2792,9 @@ function RatingBuster.ProcessTooltip(tooltip, name, link, ...)
 	-- Weapon Skill - WEAPON_RATING
 	-- Expertise - EXPERTISE_RATING
 	--]]
-	-- if isModifierKeyDown[profileDB.showSum] and isModifierKeyDown[profileDB.showSum]() then
-	-- 	RatingBuster:StatSummary(tooltip, name, link, ...)
-	-- end
+	if isModifierKeyDown[profileDB.showSum] and isModifierKeyDown[profileDB.showSum]() then
+		RatingBuster:StatSummary(tooltip, name, link, ...)
+	end
 	---------------------
 	-- Repaint tooltip --
 	---------------------
