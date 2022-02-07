@@ -4372,6 +4372,7 @@ PatternLocale.ruRU = {
 		["(6) S"] = true,
 		["(7) S"] = true,
 		["(8) S"] = true,
+		['Бонус'] = false,
 		-- Equip type
 		["Боеприпасы"] = true, -- Ice Threaded Arrow ID:19316
 		[INVTYPE_AMMO] = true,
@@ -12426,10 +12427,27 @@ function StatLogic:GetSum(item, table)
 	tip:ClearLines() -- this is required or SetX won't work the second time its called
 	tip:SetHyperlink(link)
 	debugPrint(link)
+	-- print(12429)
+	
 	for i = 2, tip:NumLines() do
+		-- if i > 30 then 
+		-- 	tip[i-1]:SetText("dsafa")
+		-- -- else
+		-- end
+		-- print(tip[i]:GetText())
+		-- print(tip[i]:GetText())
+		-- print(124291)
+		-- print(i)
+		-- if i == 30 then
+		-- local text = tip[i+1]:GetText()
+		-- else
+		if not tip[i] then break end
 		local text = tip[i]:GetText()
-
+		-- end
+		-- print(i)
+		-- print(1242911)
 		-- Trim spaces
+		
 		text = strtrim(text)
 		-- Strip color codes
 		if strsub(text, -2) == "|r" then
@@ -12438,7 +12456,7 @@ function StatLogic:GetSum(item, table)
 		if strfind(strsub(text, 1, 10), "|c%x%x%x%x%x%x%x%x") then
 			text = strsub(text, 11)
 		end
-
+		-- print(1242912)
 		local r, g, b = tip[i]:GetTextColor()
 		-----------------------
 		-- Whole Text Lookup --
@@ -12447,6 +12465,7 @@ function StatLogic:GetSum(item, table)
 		-- "Mithril Spurs"
 		local found
 		local idTable = L.WholeTextLookup[text]
+		-- print(1242913)
 		if idTable == false then
 			found = true
 			debugPrint("|cffadadad".."  WholeText Exclude: "..text)
@@ -12458,6 +12477,7 @@ function StatLogic:GetSum(item, table)
 				debugPrint("|cffff5959".."  WholeText: ".."|cffffc259"..text..", ".."|cffffff59"..tostring(id).."="..tostring(value))
 			end
 		end
+		-- print(1242914)
 		-- Fast Exclude --
 		-- Exclude obvious strings that do not need to be checked, also exclude lines that are not white and green and normal (normal for Frozen Wrath bonus)
 		if not (found or L.Exclude[text] or L.Exclude[strutf8sub(text, 1, L.ExcludeLen)] or strsub(text, 1, 1) == '"' or g < 0.8 or (b < 0.99 and b > 0.1)) then
@@ -12487,6 +12507,7 @@ function StatLogic:GetSum(item, table)
 			-- +19 Stamina = "^%+(%d+) ([%a ]+%a)$"
 			-- Stamina +19 = "^([%a ]+%a) %+(%d+)$"
 			-- +19 耐力 = "^%+(%d+) (.-)$"
+			-- print(1242915)
 			if not found then
 				local _, _, value, statText = strfind(strutf8lower(text), L.SinglePlusStatCheck)
 				if value then
@@ -12512,6 +12533,7 @@ function StatLogic:GetSum(item, table)
 					end
 				end
 			end
+			-- print(1242916)
 			-----------------------------
 			-- Single Equip Stat Check --
 			-----------------------------
@@ -12540,6 +12562,7 @@ function StatLogic:GetSum(item, table)
 					end
 				end
 			end
+			-- print(1242917)
 			-- PreScan for special cases, that will fit wrongly into DeepScan
 			-- PreScan also has exclude patterns
 			-- This is where base armor gets scanned, check text color for bonus armor
@@ -12576,6 +12599,7 @@ function StatLogic:GetSum(item, table)
 
 				end
 			end
+			-- print(1242918)
 			--------------
 			-- DeepScan --
 			--------------

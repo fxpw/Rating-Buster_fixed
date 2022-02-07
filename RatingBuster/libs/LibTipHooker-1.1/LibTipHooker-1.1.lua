@@ -165,6 +165,7 @@ local Set = {
 		local name, link = tooltip:GetItem()
 		if not name then return end -- Check if tooltip really has an item
 		for handler in pairs(HandlerList.item) do
+			-- if tooltip:NumLines() > 30 then return end
 			handler(tooltip, name, link, ...)
 		end
 	end,

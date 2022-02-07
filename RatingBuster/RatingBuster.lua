@@ -4268,6 +4268,7 @@ end
 
 function RatingBuster:StatSummary(tooltip, name, link, ...)
 	-- Hide stat summary for equipped items
+	-- print("asdasd")
 	if profileDB.sumIgnoreEquipped and IsEquippedItem(link) then return end
 	
 	-- Show stat summary only for highest level armor type and items you can use with uncommon quality and up
