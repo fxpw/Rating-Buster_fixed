@@ -1,5 +1,6 @@
 ## Interface: 30300
 ## Title: RatingBuster
+## Version: 1.4.9
 ## Notes: Item stat breakdown, analysis and comparison
 ## Notes-zhTW: 裝備數值解析與比較
 ## Author: Whitetooth
